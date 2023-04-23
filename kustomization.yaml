@@ -1,0 +1,12 @@
+---
+resources:
+  - ../users/kubernetes
+patchesStrategicMerge:
+  - set_users_config.yaml
+patchesJson6902:
+  - target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: users
+    path: set_users_deployment.yaml

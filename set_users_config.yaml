@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: users-configuration
+data:
+  USERS_DB_DATABASE: "fiufit"
+  USERS_DB_PASSWORD: "backend"
+  USERS_DB_USER: "backend"
+  USERS_DB_HOST: "postgres-release-postgresql"
