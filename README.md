@@ -37,18 +37,6 @@ NAME                            READY   STATUS    RESTARTS   AGE
 postgres-release-postgresql-0   1/1     Running   0          12s
 ```
 
-### Use local image
-
-Build an image and import it to the cluster.  
-For example, the user microservice:
-
-```bash
-docker build . --tag fiufit/users:latest
-k3d image import fiufit/users:latest --cluster=taller2
-```
-
-The tag is important, it is used in the K8s deployment.
-
 ### Deploy
 
 ```bash
@@ -64,12 +52,82 @@ kubectl port-forward svc/postgres-release-postgresql 5432:5432 -n fiufit
 kubectl port-forward svc/users-service 8000 -n fiufit
 ```
 
-## Misc
+**Note** with:
 
-### Useful commands
+```bash
+kubectl get services -n fiufit
+```
+
+You can list all services that can be exposed.
+
+## Use local image
+
+By default, images from docker hub will be used, you can build an image locally.
+and import it to the cluster.
+
+Build an image and import it to the cluster.  
+For example, the user microservice:
+
+```bash
+docker build . --tag fiufit/users:latest
+k3d image import fiufit/users:latest --cluster=taller2
+```
+
+The tag is important, it is used in the K8s deployment.
+
+### Override deployments
+
+In the file `kustomization.yaml` there are two commented out overrides:
+
+```yaml
+patchesJson6902:
+  - target:
+     group: apps
+     version: v1
+     kind: Deployment
+     name: auth
+   path: set_auth_deployment.yaml
+ - target:
+     group: apps
+     version: v1
+     kind: Deployment
+     name: users
+   path: set_users_deployment.yaml
+```
+
+When comments are removed the images pushed to the local cluster will be used.
+
+## Useful commands
+
+### Show containers
 
 ```bash
 kubectl get pods -n fiufit
+```
+
+### Show services
+
+```bash
+kubectl get services -n fiufit
+```
+
+### Show configmap
+
+```bash
+kubectl get configmap
+```
+
+### Get config map content
+
+```bash
+kubectl describe configmap CONFIGMAP-NAME
+```
+
+### SSH to pod
+
+
+```bash
+kubectl exec -it <your_pod> -- /bin/bash
 ```
 
 ### Delete postgres release
@@ -86,4 +144,3 @@ kubectl delete pvc data-postgres-release-postgresql-0 -n fiufit
 ```bash
 kubectl delete -k overlays/ -n fiufit
 ```
-
