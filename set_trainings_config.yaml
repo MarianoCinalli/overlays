@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trainings-configuration
+data:
+  TRAININGS_DB_DATABASE: "fiufit"
+  TRAININGS_DB_PASSWORD: "backend"
+  TRAININGS_DB_USER: "backend"
+  TRAININGS_DB_HOST: "postgres-release-postgresql"
