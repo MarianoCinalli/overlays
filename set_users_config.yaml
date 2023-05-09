@@ -8,3 +8,5 @@ data:
   USERS_DB_PASSWORD: "backend"
   USERS_DB_USER: "backend"
   USERS_DB_HOST: "postgres-release-postgresql"
+  USERS_AUTH_HOST: auth-service.fiufit.svc.cluster.local:8002
+  TRAININGS_LOG_LEVEL: INFO
