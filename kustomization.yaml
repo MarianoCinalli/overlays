@@ -3,7 +3,9 @@ resources:
   - ../users/kubernetes
   - ../authentication/kubernetes
   - ../trainings/kubernetes
+  - ../goals/kubernetes
 patchesStrategicMerge:
+  - set_goals_config.yaml
   - set_trainings_config.yaml
   - set_users_config.yaml
 # Uncomment patches below to use local images.
@@ -26,3 +28,9 @@ patchesStrategicMerge:
 #     kind: Deployment
 #     name: trainings
 #   path: set_trainings_deployment.yaml
+# - target:
+#     group: apps
+#     version: v1
+#     kind: Deployment
+#     name: goals
+#   path: set_goals_deployment.yaml

@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: goals-configuration
+data:
+  GOALS_DB_DATABASE: "fiufit"
+  GOALS_DB_PASSWORD: "backend"
+  GOALS_DB_USER: "backend"
+  GOALS_DB_HOST: "postgres-release-postgresql"
+  GOALS_AUTH_HOST: auth-service.fiufit.svc.cluster.local:8002
+  GOALS_LOG_LEVEL: INFO
