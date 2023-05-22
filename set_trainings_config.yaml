@@ -10,3 +10,5 @@ data:
   TRAININGS_DB_HOST: "postgres-release-postgresql"
   TRAININGS_AUTH_HOST: auth-service.fiufit.svc.cluster.local:8002
   TRAININGS_LOG_LEVEL: INFO
+  TRAININGS_DB_SSL: "false"
+  TRAININGS_AUTH_VALIDATE_CREDENTIALS: "false"

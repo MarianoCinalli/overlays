@@ -8,6 +8,8 @@ patchesStrategicMerge:
   - set_goals_config.yaml
   - set_trainings_config.yaml
   - set_users_config.yaml
+# See "Set firebase credentials in README.md"
+#  - set_trainings_firebase_credential.yaml
 # Uncomment patches below to use local images.
 #patchesJson6902:
 #  - target:

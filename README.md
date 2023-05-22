@@ -97,6 +97,26 @@ patchesJson6902:
 
 When comments are removed the images pushed to the local cluster will be used.
 
+## Configuration
+
+### Set firebase credentials for trainings
+
+Create a file named `set_trainings_firebase_credential.yaml` (it is ignored and
+will not be pushed) with:
+
+```yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trainings-configuration
+data:
+  TRAININGS_FIREBASE_PRIVATE_KEY: "FIREBASE_PRIVATE_KEY"
+```
+
+Where `FIREBASE_PRIVATE_KEY` is the private key from `credentials.json`
+downloaded from firebase.
+
 ## Useful commands
 
 ### Show containers
