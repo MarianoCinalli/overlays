@@ -10,3 +10,4 @@ data:
   GOALS_DB_HOST: "postgres-release-postgresql"
   GOALS_AUTH_HOST: auth-service.fiufit.svc.cluster.local:8002
   GOALS_LOG_LEVEL: INFO
+  GOALS_SENTRY_ENABLED: "false"
