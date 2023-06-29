@@ -8,6 +8,8 @@ Install:
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
 - [Helm](https://helm.sh/docs/intro/install/)
 
+Checkout all repositories corresponding to the projects listed in `resources:`.
+
 ## Deployment
 
 ### Create cluster
@@ -37,6 +39,20 @@ NAME                            READY   STATUS    RESTARTS   AGE
 postgres-release-postgresql-0   1/1     Running   0          12s
 ```
 
+### Deploy MongoDB
+
+```bash
+helm install mongodb-release bitnami-repo/mongodb --values overlays/mongodb/values.yaml -n fiufit
+```
+
+### Deploy Redis
+
+[Documentation](https://artifacthub.io/packages/helm/bitnami/redis)
+
+```bash
+helm install redis-release oci://registry-1.docker.io/bitnamicharts/redis --values overlays/redis/values.yaml -n fiufit
+```
+
 ### Deploy
 
 ```bash
@@ -46,8 +62,10 @@ kubectl apply -k overlays/ -n fiufit
 ### Expose services
 
 ```bash
-# Database available at localhost:5432 (user: postgres password: postgres)
+# Postgres available at localhost:5432 (user: postgres password: postgres)
 kubectl port-forward svc/postgres-release-postgresql 5432:5432 -n fiufit
+# MongoDB available at localhost:27017 (user: fiufit password: fiufit database: fiufit)
+kubectl port-forward svc/mongodb-release 27017:27017 -n fiufit
 # Users service available at localhost:8000
 kubectl port-forward svc/users-service 8000 -n fiufit
 ```
@@ -77,22 +95,22 @@ The tag is important, it is used in the K8s deployment.
 
 ### Override deployments
 
-In the file `kustomization.yaml` there are two commented out overrides:
+In the file `kustomization.yaml` there are commented out overrides:
 
 ```yaml
-patchesJson6902:
-  - target:
-     group: apps
-     version: v1
-     kind: Deployment
-     name: auth
-   path: set_auth_deployment.yaml
- - target:
-     group: apps
-     version: v1
-     kind: Deployment
-     name: users
-   path: set_users_deployment.yaml
+# patchesJson6902:
+#   - target:
+#      group: apps
+#      version: v1
+#      kind: Deployment
+#      name: auth
+#    path: set_auth_deployment.yaml
+#  - target:
+#      group: apps
+#      version: v1
+#      kind: Deployment
+#      name: users
+#    path: set_users_deployment.yaml
 ```
 
 When comments are removed the images pushed to the local cluster will be used.

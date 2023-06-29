@@ -1,0 +1,6 @@
+---
+# https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+auth:
+  usernames: ["fiufit"]
+  passwords: ["fiufit"]
+  databases: ["fiufit"]

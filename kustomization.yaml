@@ -4,14 +4,17 @@ resources:
   - ../authentication/kubernetes
   - ../trainings/kubernetes
   - ../goals/kubernetes
+  - ../metrics/kubernetes
+  - ../payment/kubernetes
 patchesStrategicMerge:
-  - set_goals_config.yaml
-  - set_trainings_config.yaml
   - set_users_config.yaml
+  - set_trainings_config.yaml
+  - set_goals_config.yaml
+  - set_metrics_config.yaml
 # See "Set firebase credentials in README.md"
 #  - set_trainings_firebase_credential.yaml
 # Uncomment patches below to use local images.
-#patchesJson6902:
+# patchesJson6902:
 #  - target:
 #     group: apps
 #     version: v1
@@ -29,10 +32,22 @@ patchesStrategicMerge:
 #     version: v1
 #     kind: Deployment
 #     name: trainings
-#   path: set_trainings_deployment.yaml
+# #   path: set_trainings_deployment.yaml
 # - target:
 #     group: apps
 #     version: v1
 #     kind: Deployment
 #     name: goals
 #   path: set_goals_deployment.yaml
+# - target:
+#     group: apps
+#     version: v1
+#     kind: Deployment
+#     name: metrics
+#   path: set_metrics_api_deployment.yaml
+# - target:
+#     group: apps
+#     version: v1
+#     kind: Deployment
+#     name: metrics-consumer
+#   path: set_metrics_consumer_deployment.yaml

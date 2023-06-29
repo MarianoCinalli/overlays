@@ -1,0 +1,5 @@
+---
+replica:
+  replicaCount: 0
+auth:
+  enabled: false

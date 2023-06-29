@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: metrics-configuration
+data:
+  METRICS_LOG_LEVEL: DEBUG
+  METRICS_MONGO_HOST: "mongodb-release"
+  METRICS_MONGO_DRIVER: mongodb
+  METRICS_REDIS_HOST: "redis-release-master.fiufit.svc.cluster.local"
+  METRICS_MONGO_PASSWORD: "fiufit"

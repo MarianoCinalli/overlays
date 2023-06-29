@@ -9,5 +9,9 @@ data:
   USERS_DB_USER: "backend"
   USERS_DB_HOST: "postgres-release-postgresql"
   USERS_AUTH_HOST: auth-service.fiufit.svc.cluster.local:8002
-  USERS_LOG_LEVEL: INFO
-  USERS_SENTRY_ENABLED: "false"
+  USERS_LOG_LEVEL: DEBUG
+  NEW_RELIC_DEVELOPER_MODE: "true"
+  USERS_MONGO_HOST: "mongodb-release"
+  USERS_MONGO_DRIVER: mongodb
+  USERS_MONGO_PASSWORD: "fiufit"
+  USERS_REDIS_HOST: "redis-release-master.fiufit.svc.cluster.local"
